@@ -40,8 +40,12 @@ module.exports = {
     'import/resolver': {
       alias: {
         map: [
-          ['~src', './src'],
-          ['~assets', './src/assets'],
+          ['api', './src/api'],
+          ['assets', './src/assets'],
+          ['components', './src/components'],
+          ['constants', './src/constants'],
+          ['router', './src/router'],
+          ['view', './src/view'],
         ],
         extensions: ['.ts', '.js', '.jsx', '.json'],
       },
