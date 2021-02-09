@@ -6,6 +6,7 @@
   --text-color: rgb(74, 74, 74);
   --border-color: rgba(74, 74, 74, 0.05);
   --shadow-color: rgba(74, 74, 74, 0.15);
+  --input-border-color: rgba(74, 74, 74, 0.25);
 }
 
 body {
@@ -55,11 +56,15 @@ img {
 }
 
 .ml-2 {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
 .ml-3 {
-  margin-left: 1rem;
+  margin-left: 1.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
 }
 
 .mb-5 {
@@ -80,6 +85,18 @@ img {
   background-color: var(--red);
   font-size: 0.5rem;
   color: var(--white);
+}
+
+.rounded-circle {
+  border-radius: 100%;
+}
+
+.d-block {
+  display: block;
+}
+
+.w-100 {
+  width: 100%;
 }
 
 /* component classes */
@@ -170,6 +187,63 @@ img {
 
 .content-header {
   font-weight: 700;
+}
+
+/* profile details */
+
+.profile {
+  display: flex;
+  align-items: flex-start;
+}
+
+.profile__details-left {
+  width: 10rem;
+  flex: 0 0 10rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.profile__img-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-img {
+  height: 7.5rem;
+  width: 7.5rem;
+  object-fit: cover;
+  background-color: var(--border-color);
+}
+
+.profile__details-right {
+  flex: 1 1 auto;
+}
+
+/* profile form */
+
+.form-group {
+  display: flex;
+  align-items: center;
+}
+
+.form-label {
+  max-width: 15rem;
+  min-width: fit-content;
+  flex: 0 1 15rem;
+}
+
+.form-input {
+  flex: 1 1 auto;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 2px solid var(--input-border-color);
+  transition: border-color 0.3s ease-out;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--red);
 }
 
 @media screen and (min-width: 480px) {

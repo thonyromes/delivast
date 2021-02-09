@@ -2,11 +2,13 @@
 
 import React from 'react';
 
+import type { Node } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import ICON from 'constants/icons';
 
-export default function Sidebar() {
+export default function Sidebar(): Node {
   return (
     <aside className="sidebar">
       <nav className="mb-5">
@@ -14,7 +16,7 @@ export default function Sidebar() {
           <li className="sidebar__nav-item">
             <Link to="/orders" className="sidebar__nav-link decoration-none">
               <img src={ICON.shoppingBag} alt="orders" className="icon-md" />
-              <small className="ml-3">My orders</small>
+              <small className="ml-2">My orders</small>
             </Link>
           </li>
           <li className="sidebar__nav-item">
@@ -27,7 +29,7 @@ export default function Sidebar() {
                 alt="shopping list"
                 className="icon-md"
               />
-              <small className="ml-3">Shopping list</small>
+              <small className="ml-2">Shopping list</small>
             </Link>
           </li>
         </ul>
@@ -44,19 +46,19 @@ export default function Sidebar() {
                 alt="profile"
                 className="icon-md"
               />
-              <small className="ml-3">My profile</small>
+              <small className="ml-2">My profile</small>
             </Link>
           </li>
           <li className="sidebar__nav-item">
             <Link to="/addresses" className="sidebar__nav-link decoration-none">
               <img src={ICON.location} alt="location" className="icon-md" />
-              <small className="ml-3">Addresses</small>
+              <small className="ml-2">Addresses</small>
             </Link>
           </li>
           <li className="sidebar__nav-item">
             <Link to="/contacts" className="sidebar__nav-link decoration-none">
               <img src={ICON.contact} alt="contact" className="icon-md" />
-              <small className="ml-3">Contacts</small>
+              <small className="ml-2">Contacts</small>
             </Link>
           </li>
         </ul>

@@ -2,11 +2,13 @@
 
 import React from 'react';
 
+import type { Node } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import ICON from 'constants/icons';
 
-export default function Header() {
+export default function Header(): Node {
   return (
     <header className="header">
       <div className="header__logo">

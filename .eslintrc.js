@@ -4,7 +4,11 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:flowtype/recommended',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -12,7 +16,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks'],
+  plugins: ['react', 'react-hooks', 'flowtype'],
   rules: {
     'react/jsx-filename-extension': [
       2,
