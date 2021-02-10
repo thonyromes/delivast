@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
@@ -6,6 +6,13 @@ import Sidebar from 'components/Sidebar';
 import FormField from 'components/FormField';
 
 export default function Profile() {
+  const [formFields, setFormFields] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+  });
+
   return (
     <div className="wrapper">
       <div className="container bg-white">
@@ -18,16 +25,60 @@ export default function Profile() {
               <div className="profile__details-left">
                 <div className="profile__img-upload">
                   <img
-                    src="https://picsum.photos/200"
+                    src="https://picsum.photos/100"
                     alt="user"
                     className="rounded-circle profile-img"
                   />
-                  <small className="mt-1">Photo</small>
+                  <small className="mt-1 upload-text">Photo</small>
                 </div>
               </div>
               <div className="profile__details-right">
                 <form action="#">
-                  <FormField id="firstName" />
+                  <div className="mb-3">
+                    <FormField
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      label="First Name"
+                      value={formFields.firstName}
+                      onChange={setFormFields}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <FormField
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      label="Last Name"
+                      value={formFields.lastName}
+                      onChange={setFormFields}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <FormField
+                      type="email"
+                      id="email"
+                      name="email"
+                      label="Email"
+                      value={formFields.email}
+                      onChange={setFormFields}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <FormField
+                      type="phone"
+                      id="phone"
+                      name="phone"
+                      label="Phone number"
+                      value={formFields.phone}
+                      onChange={setFormFields}
+                    />
+                  </div>
+                  <div className="mt-4 align-right">
+                    <button type="submit" className="btn btn--primary">
+                      Save changes
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
