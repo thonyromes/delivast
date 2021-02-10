@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
 
 import FormField from 'components/FormField';
+
+import { getProfile } from 'api';
 
 export default function Profile() {
   const [formFields, setFormFields] = useState({
@@ -11,7 +13,41 @@ export default function Profile() {
     lastName: '',
     email: '',
     phone: '',
+    picture: '',
   });
+
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    isMounted.current = true;
+
+    const handleFetchProfile = async () => {
+      try {
+        const profileData = await getProfile();
+
+        if (!isMounted) return;
+
+        profileData.results.forEach((user, ind) => {
+          setFormFields({
+            firstName: user.name.first,
+            lastName: user.name.last,
+            email: user.email,
+            phone: user.phone,
+            picture: user.picture.medium,
+          });
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    handleFetchProfile();
+
+    return () => {
+      isMounted.current = false;
+      return handleFetchProfile;
+    };
+  }, []);
 
   const canSubmit = Object.values(formFields).every((field) => field !== '');
 
@@ -27,7 +63,7 @@ export default function Profile() {
               <div className="profile__details-left">
                 <div className="profile__img-upload">
                   <img
-                    src="https://picsum.photos/100"
+                    src={formFields.picture}
                     alt="user"
                     className="rounded-circle profile-img"
                   />

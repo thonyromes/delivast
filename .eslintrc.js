@@ -32,6 +32,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'no-unused-vars': 'warn',
     'jsx-a11y/label-has-associated-control': 'warn',
+    'import/prefer-default-export': 'warn',
   },
   settings: {
     react: {

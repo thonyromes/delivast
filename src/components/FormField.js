@@ -22,7 +22,6 @@ export default function FormField(props: Props): Node {
   const [input, setInput] = useState({
     class: '',
     errMsg: '',
-    fieldValue: value,
   });
 
   const validateInput = (val) => val !== '';
@@ -30,11 +29,12 @@ export default function FormField(props: Props): Node {
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
     const oldValue = e.currentTarget.value;
 
+    onChange((prevState) => ({ ...prevState, [name]: oldValue }));
+
     if (!validateInput(oldValue)) {
       setInput(() => ({
         class: 'danger',
         errMsg: `${label} is required`,
-        fieldValue: oldValue,
       }));
 
       return;
@@ -43,10 +43,7 @@ export default function FormField(props: Props): Node {
     setInput(() => ({
       class: 'success',
       errMsg: 'Good!',
-      fieldValue: oldValue,
     }));
-
-    onChange((prevState) => ({ ...prevState, [name]: oldValue }));
   };
 
   return (
@@ -59,7 +56,7 @@ export default function FormField(props: Props): Node {
           className={`form-input ${input.class}`}
           placeholder={label}
           name={name}
-          value={input.fieldValue}
+          value={value}
           onChange={handleChange}
         />
       </div>
