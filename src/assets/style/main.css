@@ -7,6 +7,7 @@
   --border-color: rgba(74, 74, 74, 0.05);
   --shadow-color: rgba(74, 74, 74, 0.15);
   --input-border-color: rgba(74, 74, 74, 0.25);
+  --overlay-bg-color: rgba(74, 74, 74, 0.35);
 }
 
 body {
@@ -124,12 +125,30 @@ img {
   text-align: right;
 }
 
+.not-allowed {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
 /* component classes */
 
 .container {
   max-width: 100rem;
   width: 90%;
   margin: 0 auto;
+  position: relative;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  top: -5rem;
+  height: 140%;
+  border-bottom-right-radius: 15rem;
+  background-color: white;
+  width: 100%;
+  z-index: -1;
+  transform: rotate(2deg);
 }
 
 /* header */
@@ -142,6 +161,7 @@ img {
   padding-top: 1rem;
   padding-bottom: 1.5rem;
   margin: 0 auto;
+  max-width: 95%;
 }
 
 .header__logo {
@@ -185,6 +205,7 @@ img {
   padding-top: 2.5rem;
   padding-bottom: 2rem;
   margin: 0 auto;
+  max-width: 95%;
 }
 
 /* sidebar */
@@ -226,43 +247,60 @@ img {
 .profile {
   display: flex;
   align-items: flex-start;
+  flex-direction: column;
 }
 
 .profile__details-left {
   width: 10rem;
-  flex: 0 0 10rem;
+  flex: 0 0 6.5rem;
   display: flex;
   justify-content: flex-start;
 }
 
 .profile__img-upload {
+  height: 5rem;
+  width: 5rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
 }
 
 .profile-img {
-  height: 5rem;
-  width: 5rem;
   object-fit: cover;
   background-color: var(--border-color);
 }
 
+.upload-text {
+  position: absolute;
+  padding: 0.25rem 0.5rem;
+  display: block;
+  display: flex;
+  border-radius: 0.25rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--overlay-bg-color);
+  color: var(--white);
+}
+
 .profile__details-right {
   flex: 1 1 auto;
+  width: 100%;
 }
 
 /* profile form */
 
 .form-group {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .form-label {
   max-width: 12rem;
   min-width: fit-content;
-  flex: 0 1 12rem;
+  flex: 0 1 1.5rem;
 }
 
 .form-input {
@@ -289,16 +327,40 @@ img {
 @media screen and (min-width: 480px) {
   .header,
   .main {
-    max-width: 80%;
+    max-width: 90%;
   }
 }
 
 @media screen and (min-width: 768px) {
+  .header,
+  .main {
+    max-width: 80%;
+  }
+
   .header {
     flex-direction: row;
   }
 
   .header__logo {
     flex: 0 1 12rem;
+  }
+
+  .form-group {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .form-label {
+    flex: 0 1 12rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .profile {
+    flex-direction: row;
+  }
+
+  .profile__details-left {
+    flex: 0 0 10rem;
   }
 }

@@ -13,9 +13,11 @@ export default function Profile() {
     phone: '',
   });
 
+  const canSubmit = Object.values(formFields).every((field) => field !== '');
+
   return (
     <div className="wrapper">
-      <div className="container bg-white">
+      <div className="container">
         <Header />
         <main className="main">
           <Sidebar />
@@ -29,11 +31,11 @@ export default function Profile() {
                     alt="user"
                     className="rounded-circle profile-img"
                   />
-                  <small className="mt-1 upload-text">Photo</small>
+                  <small className="upload-text">Photo</small>
                 </div>
               </div>
               <div className="profile__details-right">
-                <form action="#">
+                <form action="#" method="post">
                   <div className="mb-3">
                     <FormField
                       type="text"
@@ -75,7 +77,13 @@ export default function Profile() {
                     />
                   </div>
                   <div className="mt-4 align-right">
-                    <button type="submit" className="btn btn--primary">
+                    <button
+                      type="submit"
+                      className={`btn btn--primary ${
+                        canSubmit ? undefined : 'not-allowed'
+                      }`}
+                      disabled={!canSubmit}
+                    >
                       Save changes
                     </button>
                   </div>
